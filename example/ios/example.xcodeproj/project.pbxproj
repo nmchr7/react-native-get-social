@@ -363,7 +363,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$SRCROOT/../scripts/getsocial.sh\" --app-id=\"R9weI87S86q0\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$SRCROOT/../scripts/getsocial.sh\" --app-id=\"YOUR_KEY\"\n";
 		};
 		6BF0716BBCB59AEDCCD870FB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
