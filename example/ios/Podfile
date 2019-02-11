@@ -1,0 +1,40 @@
+react_native_path = '../node_modules/react-native'
+
+project "example.xcodeproject"
+
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'example' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+    # React native core pods
+    pod 'yoga', :path => react_native_path + '/ReactCommon/yoga'
+    pod 'React', :path => react_native_path, :subspecs => [
+      'Core',
+      'CxxBridge',
+      'RCTImage',
+      'RCTNetwork',
+      'RCTText',
+      'RCTGeolocation',
+      'RCTWebSocket',
+      'RCTSettings',
+      'RCTAnimation',
+      'DevSupport',
+      'RCTLinkingIOS',
+      'RCTActionSheet',
+      'RCTCameraRoll',
+      'RCTPushNotification'
+    ]
+
+    pod 'DoubleConversion', :podspec => react_native_path + '/third-party-podspecs/DoubleConversion.podspec'
+    pod 'glog', :podspec => react_native_path + '/third-party-podspecs/glog.podspec'
+    pod 'Folly', :podspec => react_native_path + '/third-party-podspecs/Folly.podspec'
+    pod 'React', :path => '../node_modules/react-native'
+    pod 'RNGetSocial', :path => '../../'
+
+inherit! :search_paths  
+
+
+end
