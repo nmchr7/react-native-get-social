@@ -1,4 +1,6 @@
 #import "RNGetSocial.h"
+#import <GetSocial/GetSocial.h>
+#import <GetSocialUI/GetSocialUI.h>
 
 @implementation RNGetSocial
 
@@ -14,6 +16,9 @@ RCT_REMAP_METHOD(sampleMethod,
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
     NSArray *events = @[@"1", @"2", @"3", @"4", @"5"];
+    
+    BOOL wasShown = [[GetSocialUI createInvitesView] show];
+    NSLog(@"GetSocial Smart Invites UI was shown %d", wasShown);
     if (events) {
         resolve(events);
     } else {

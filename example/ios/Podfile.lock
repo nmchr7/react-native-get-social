@@ -9,55 +9,55 @@ PODS:
   - GetSocial/UI (6.24.4):
     - GetSocial/Core
   - glog (0.3.5)
-  - React (0.58.4):
-    - React/Core (= 0.58.4)
-  - React/Core (0.58.4):
-    - yoga (= 0.58.4.React)
-  - React/CxxBridge (0.58.4):
+  - React (0.58.3):
+    - React/Core (= 0.58.3)
+  - React/Core (0.58.3):
+    - yoga (= 0.58.3.React)
+  - React/CxxBridge (0.58.3):
     - Folly (= 2018.10.22.00)
     - React/Core
     - React/cxxreact
     - React/jsiexecutor
-  - React/cxxreact (0.58.4):
+  - React/cxxreact (0.58.3):
     - boost-for-react-native (= 1.63.0)
     - Folly (= 2018.10.22.00)
     - React/jsinspector
-  - React/DevSupport (0.58.4):
+  - React/DevSupport (0.58.3):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.58.4)
-  - React/jsi (0.58.4):
+  - React/fishhook (0.58.3)
+  - React/jsi (0.58.3):
     - Folly (= 2018.10.22.00)
-  - React/jsiexecutor (0.58.4):
+  - React/jsiexecutor (0.58.3):
     - Folly (= 2018.10.22.00)
     - React/cxxreact
     - React/jsi
-  - React/jsinspector (0.58.4)
-  - React/RCTActionSheet (0.58.4):
+  - React/jsinspector (0.58.3)
+  - React/RCTActionSheet (0.58.3):
     - React/Core
-  - React/RCTAnimation (0.58.4):
+  - React/RCTAnimation (0.58.3):
     - React/Core
-  - React/RCTBlob (0.58.4):
+  - React/RCTBlob (0.58.3):
     - React/Core
-  - React/RCTCameraRoll (0.58.4):
+  - React/RCTCameraRoll (0.58.3):
     - React/Core
     - React/RCTImage
-  - React/RCTGeolocation (0.58.4):
+  - React/RCTGeolocation (0.58.3):
     - React/Core
-  - React/RCTImage (0.58.4):
+  - React/RCTImage (0.58.3):
     - React/Core
     - React/RCTNetwork
-  - React/RCTLinkingIOS (0.58.4):
+  - React/RCTLinkingIOS (0.58.3):
     - React/Core
-  - React/RCTNetwork (0.58.4):
+  - React/RCTNetwork (0.58.3):
     - React/Core
-  - React/RCTPushNotification (0.58.4):
+  - React/RCTPushNotification (0.58.3):
     - React/Core
-  - React/RCTSettings (0.58.4):
+  - React/RCTSettings (0.58.3):
     - React/Core
-  - React/RCTText (0.58.4):
+  - React/RCTText (0.58.3):
     - React/Core
-  - React/RCTWebSocket (0.58.4):
+  - React/RCTWebSocket (0.58.3):
     - React/Core
     - React/fishhook
     - React/RCTBlob
@@ -65,7 +65,7 @@ PODS:
     - GetSocial/Core
     - GetSocial/UI
     - React
-  - yoga (0.58.4.React)
+  - yoga (0.58.3.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -110,7 +110,7 @@ SPEC CHECKSUMS:
   GetSocial: 487d5f12c318e841c7b19b67021444c87c8d2685
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   React: 9b873b38b92ed8012d7cdf3b965477095ed364c4
-  RNGetSocial: f3807ad9d29ed0a7a5c3c13b551fb79a5b5a9978
+  RNGetSocial: 2cd09a5588efe49f80527de8b7e7d10f2db09b57
   yoga: 0885622311729a02c2bc02dca97167787a51488b
 
 PODFILE CHECKSUM: 7f86cb99032a7cf2823ad5603048fad9cce3f275
