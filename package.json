@@ -2,15 +2,14 @@
   "name": "react-native-get-social",
   "title": "React Native Get Social",
   "version": "0.0.1",
-  "description": "",
+  "description": "This is [WIP]",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-get-social.git",
-    "baseUrl": "https://github.com/github_account/react-native-get-social"
+    "url": "git@github.com:nmchr7/react-native-get-social.git"
   },
   "keywords": [
     "react-native"
@@ -28,7 +27,6 @@
   },
   "devDependencies": {
     "react": "16.2.0",
-    "react-native": "^0.52.0",
-    "react-native-windows": "0.52.0"
+    "react-native": "^0.52.0"
   }
 }
