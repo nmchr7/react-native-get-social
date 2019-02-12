@@ -1,14 +1,15 @@
 buildscript {
   repositories {
     jcenter()
-    maven { url 'https://maven.google.com/' }
+    google()
+    maven { url 'http://maven.getsocial.im/' }
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.2.1'
+    classpath 'com.android.tools.build:gradle:3.1.4'
   }
 }
-
+// test comment
 apply plugin: 'com.android.library'
 
 def safeExtGet(prop, fallback) {
@@ -31,13 +32,9 @@ android {
   }
 }
 
-repositories {
-  mavenCentral()
-}
 
 dependencies {
   implementation "com.facebook.react:react-native:${safeExtGet('reactNativeVersion', '+')}"
   implementation('im.getsocial:getsocial-core:[6,7)@aar')
   implementation('im.getsocial:getsocial-ui:[6,7)@aar')
-  implementation 'com.android.installreferrer:installreferrer:1.0'
 }
