@@ -1,37 +1,53 @@
+def safeExtGet(prop, fallback) {
+  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+
 buildscript {
   repositories {
-    jcenter()
     google()
+    maven {
+      url 'https://maven.google.com'
+    }
+    jcenter()
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.1.4'
+    classpath 'com.android.tools.build:gradle:3.0.1'
   }
 }
-// test comment
+
 apply plugin: 'com.android.library'
 
-def safeExtGet(prop, fallback) {
-    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
-}
-
-
 android {
-  compileSdkVersion safeExtGet('compileSdkVersion', 28)
-  buildToolsVersion safeExtGet('buildToolsVersion', '28.0.2')
+  compileSdkVersion safeExtGet('compileSdkVersion', 27)
+  buildToolsVersion safeExtGet('buildToolsVersion', '27.0.3')
 
   defaultConfig {
     minSdkVersion safeExtGet('minSdkVersion', 16)
-    targetSdkVersion safeExtGet('targetSdkVersion', 28)
-    versionCode 1
-    versionName "1.0"
+    targetSdkVersion safeExtGet('targetSdkVersion', 27)
   }
   lintOptions {
     abortOnError false
+    warning 'InvalidPackage'
   }
 }
 
+repositories {
+  google()
+  mavenCentral()
+  maven {
+    url 'https://maven.google.com'
+  }
+  maven { url 'http://maven.getsocial.im/' }
+  maven {
+    // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+    url "$rootDir/../node_modules/react-native/android"
+  }
+}
 
 dependencies {
-  implementation "com.facebook.react:react-native:${safeExtGet('reactNativeVersion', '+')}"
+  compileOnly 'com.facebook.react:react-native:+'
+  implementation('im.getsocial:getsocial-core:[6,7)@aar')
+  implementation('im.getsocial:getsocial-ui:[6,7)@aar')
+
 }
