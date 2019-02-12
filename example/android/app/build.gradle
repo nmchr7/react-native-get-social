@@ -1,5 +1,5 @@
 apply plugin: "com.android.application"
-
+apply plugin: 'im.getsocial'
 import com.android.build.OutputFile
 
 /**
@@ -94,6 +94,9 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
+    getsocial {
+        appId "<YOUR_APP_ID>"
+    }
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
