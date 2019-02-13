@@ -1,7 +1,7 @@
 {
   "name": "react-native-get-social",
   "title": "React Native Get Social",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "This project is very much WIP but more is to come very soon. It is to become a thin React Native wrapper around the [GetSocial](https://www.getsocial.im) native iOS and Android SDK",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,6 @@
     "/ios",
     "/android",
     "/index.js",
-    "/LICENSE",
-    "/README.md",
     "/RNGetSocial.podspec"
   ],
   "repository": {
