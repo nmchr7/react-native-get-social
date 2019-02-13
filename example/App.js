@@ -1,24 +1,28 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Button, Platform, StyleSheet, Text, View } from "react-native";
 import GetSocial from "react-native-get-social";
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
 
 export default class App extends Component {
-  componentDidMount = async () => {
-    const test = await GetSocial.sampleMethod();
+  testSendInvite = async () => {
+    if (Platform.OS === "android") {
+      const test = await GetSocial.sendInvite(
+        "email",
+        evt => console.log("success___", evt),
+        err => console.log("OMG FAIL__", err)
+      );
+    } else {
+      const test = GetSocial.sendInvite();
+      console.log(test);
+    }
     console.log(test);
   };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.welcome}>Welcome to React Native GetSocial</Text>
+        <Text style={styles.instructions}>To get started push the button!</Text>
+        <Button title="Send invite" onPress={this.testSendInvite} />
       </View>
     );
   }

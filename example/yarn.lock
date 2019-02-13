@@ -5023,7 +5023,7 @@ react-is@^16.6.3, react-is@^16.8.1:
   integrity sha512-ioMCzVDWvCvKD8eeT+iukyWrBGrA3DiFYkXfBsVYIRdaREZuBjENG+KjrikavCLasozqRWTwFUagU/O4vPpRMA==
 
 "react-native-get-social@file:..":
-  version "0.0.4"
+  version "0.0.6"
 
 react-native@0.58.3:
   version "0.58.3"

@@ -1,10 +1,18 @@
 # react-native-get-social
 
+## **DISCLAIMER!**
+
+This project is very much WIP but more is to come very soon. It is to become a thin React Native wrapper around the [GetSocial](https://www.getsocial.im) native iOS and Android SDK
+
 ## Getting started
 
 `$ npm install react-native-get-social --save`
 
-### Mostly automatic installation
+### Mostly automatic installation (unstable)
+
+### **See example folder for reference!**
+
+You won't be able to build neither iOS or Android without a valid key for GetSocial. So if you want to check this project out [Create free account](https://dashboard.getsocial.im/#/register)
 
 `$ react-native link react-native-get-social`
 
@@ -27,18 +35,9 @@
 2. Append the following lines to `android/settings.gradle`:
    ```
    include ':react-native-get-social'
-   project(':react-native-get-social').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-get-social/android')
+   project(':react-native-get-social').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-get-social/android')
    ```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
    ```
-     compile project(':react-native-get-social')
+     implematation project(':react-native-get-social')
    ```
-
-## Usage
-
-```javascript
-import RNGetSocial from "react-native-get-social";
-
-// TODO: What to do with the module?
-RNGetSocial;
-```

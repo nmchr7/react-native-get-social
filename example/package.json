@@ -1,9 +1,11 @@
 {
   "name": "example",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
     "test": "jest",
     "postinstall": "node ../scripts/examples_postinstall.js node_modules/react-native-get-social"
   },

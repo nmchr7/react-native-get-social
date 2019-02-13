@@ -49,5 +49,4 @@ dependencies {
   compileOnly 'com.facebook.react:react-native:+'
   implementation('im.getsocial:getsocial-core:[6,7)@aar')
   implementation('im.getsocial:getsocial-ui:[6,7)@aar')
-
 }

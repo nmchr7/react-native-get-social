@@ -11,8 +11,8 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
-RCT_REMAP_METHOD(sampleMethod,
-                  sampleMethodWithResolver:(RCTPromiseResolveBlock)resolve
+RCT_REMAP_METHOD(sendInvite,
+                  sendInviteWithResolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
     NSArray *events = @[@"1", @"2", @"3", @"4", @"5"];

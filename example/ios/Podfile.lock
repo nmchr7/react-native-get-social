@@ -61,7 +61,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNGetSocial (0.0.1):
+  - RNGetSocial (0.0.6):
     - GetSocial/Core
     - GetSocial/UI
     - React
