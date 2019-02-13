@@ -1,13 +1,20 @@
 {
   "name": "react-native-get-social",
   "title": "React Native Get Social",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "This project is very much WIP but more is to come very soon. It is to become a thin React Native wrapper around the [GetSocial](https://www.getsocial.im) native iOS and Android SDK",
   "main": "index.js",
   "scripts": {
-    "clean:install": "yarn && cd example && yarn && cd ios && pod update",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "/ios",
+    "/android",
+    "/index.js",
+    "/LICENSE",
+    "/README.md",
+    "/RNGetSocial.podspec"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:nmchr7/react-native-get-social.git"
