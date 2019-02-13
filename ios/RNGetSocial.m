@@ -11,21 +11,20 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
-RCT_REMAP_METHOD(sendInvite,
-                  sendInviteWithResolver:(RCTPromiseResolveBlock)resolve
+RCT_REMAP_METHOD(showInviteUI,
+                  showInviteUIWithResolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
-    NSArray *events = @[@"1", @"2", @"3", @"4", @"5"];
     
     BOOL wasShown = [[GetSocialUI createInvitesView] show];
-    NSLog(@"GetSocial Smart Invites UI was shown %d", wasShown);
-    if (events) {
-        resolve(events);
+    if (wasShown) {
+        NSLog(@"GetSocial Smart Invites UI was shown");
+        resolve(@YES);
     } else {
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:@"OMG!" forKey:NSLocalizedDescriptionKey];
+        [details setValue:@"err" forKey:NSLocalizedDescriptionKey];
         NSError *error = [NSError errorWithDomain:@"You FAILED!" code:200 userInfo:details];
-        reject(@"no_events", @"There were no events - ", error);
+        reject(@"no_ui", @"There were no invite UI shown - ", error);
     }
 }
 
