@@ -47,8 +47,6 @@ You won't be able to build neither iOS or Android without a valid key for GetSoc
 
         maven { url 'http://maven.getsocial.im/' }
     }
-   ```
-
 
     dependencies {
 
