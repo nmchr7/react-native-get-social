@@ -24,6 +24,12 @@
     "name": "Nicolai Mølgaard Christensen",
     "email": "nmchr7@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "Andrei Barabas",
+      "email": "andrei@soundmix.live"
+    }
+  ],
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
