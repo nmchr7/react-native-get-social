@@ -33,11 +33,27 @@ You won't be able to build neither iOS or Android without a valid key for GetSoc
 - Add `new RNGetSocialPackage()` to the list returned by the `getPackages()` method
 
 2. Append the following lines to `android/settings.gradle`:
-   ```
+   ```gradle
    include ':react-native-get-social'
    project(':react-native-get-social').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-get-social/android')
    ```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
+
+   ```gradle
+
+    repositories {
+
+        //...other configuration here...
+
+        maven { url 'http://maven.getsocial.im/' }
+    }
    ```
-     implematation project(':react-native-get-social')
-   ```
+
+
+    dependencies {
+
+        //...other configuration here...
+
+        implematation project(':react-native-get-social')
+    }
+    ```
