@@ -11,9 +11,14 @@ import com.facebook.react.bridge.Callback;
 
 import im.getsocial.sdk.GetSocial;
 import im.getsocial.sdk.usermanagement.OnUserChangedListener;
+import im.getsocial.sdk.invites.FetchReferralDataCallback;
+import im.getsocial.sdk.invites.ReferralData;
+import im.getsocial.sdk.GetSocialException;
 
 import java.util.Map;
 import java.util.HashMap;
+
+import android.support.annotation.Nullable;
 
 public class RNGetSocialModule extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
@@ -57,6 +62,39 @@ public class RNGetSocialModule extends ReactContextBaseJavaModule {
 
                 // finalize the promise
                 promise.resolve(null);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getReferralData(final Promise promise) {
+        GetSocial.getReferralData(new FetchReferralDataCallback() {
+            @Override
+            public void onSuccess(@Nullable ReferralData referralData) {
+                if (referralData != null) {
+
+                    Map<String, String> data = referralData.getReferralLinkParams();
+                    WritableMap params = Arguments.createMap();
+
+                    // convert the params to a form understandable by the Bridge
+                    for (Map.Entry<String, String> entry : data.entrySet()) {
+                        params.putString(entry.getKey(), entry.getValue());
+                    }
+
+                    // send the params to JS
+                    promise.resolve(params);
+                } else {
+
+                    // no referral data found, but still resolve
+                    promise.resolve(null);
+                }
+            }
+
+            @Override
+            public void onFailure(GetSocialException error) {
+
+                // something went wrong
+                promise.reject(error);
             }
         });
     }

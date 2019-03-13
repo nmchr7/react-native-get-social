@@ -35,6 +35,11 @@ class Wrapper {
    */
   static whenInitialized = () => RNGetSocial.whenInitialized();
 
+  /**
+   * Promise chain that resolves with the link params
+   */
+  static getReferralData = () => RNGetSocial.getReferralData();
+
   //
   // Check if the GetSocial SDK is initialized, or not
   //
