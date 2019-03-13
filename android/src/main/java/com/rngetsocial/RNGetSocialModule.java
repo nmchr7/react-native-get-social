@@ -50,13 +50,13 @@ public class RNGetSocialModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void onInitialized(final Callback callback) {
+    public void whenInitialized(final Promise promise) {
         GetSocial.whenInitialized(new Runnable() {
             @Override
             public void run() {
 
-                // notify the JS callback
-                callback.invoke();
+                // finalize the promise
+                promise.resolve(null);
             }
         });
     }

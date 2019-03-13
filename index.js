@@ -31,14 +31,9 @@ class Wrapper {
   }
 
   /**
-   * Callback when the sdk has initialized
+   * Promise chain that resolves when the sdk has initialized
    */
-  static onInitialized = callback => {
-    //this might get called before the getSocialInitialized event, so also use this opportunity to cache the result
-    Wrapper._setInitialized();
-
-    RNGetSocial.onInitialized(callback);
-  };
+  static whenInitialized = () => RNGetSocial.whenInitialized();
 
   //
   // Check if the GetSocial SDK is initialized, or not
