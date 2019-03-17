@@ -4,21 +4,26 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
 import im.getsocial.sdk.GetSocial;
+import im.getsocial.sdk.ui.GetSocialUi;
 import im.getsocial.sdk.usermanagement.OnUserChangedListener;
 import im.getsocial.sdk.invites.FetchReferralDataCallback;
 import im.getsocial.sdk.invites.ReferralData;
+import im.getsocial.sdk.invites.LinkParams;
+import im.getsocial.sdk.ui.invites.InviteUiCallback;
 import im.getsocial.sdk.GetSocialException;
 
 import java.util.Map;
 import java.util.HashMap;
 
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 public class RNGetSocialModule extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
@@ -33,8 +38,50 @@ public class RNGetSocialModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void showInviteUI(final Promise promise) {
-        // TODO implement
+    public void showInviteUI(final ReadableMap params, final Promise promise) {
+
+        getCurrentActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                LinkParams linkParams = new LinkParams();
+
+                // convert the params to link params
+                for (Map.Entry<String, Object> entry : params.toHashMap().entrySet()) {
+
+                    // since linkParams can only be strings,
+                    // make sure to notify the React native thread in case it send anything else
+                    // as using .toString() would convert an id sent as integer from 3 to 3.0 (which
+                    // is obviously not correct)
+                    if (!(entry.getValue() instanceof String)) {
+                        promise.reject(entry.getKey() + " is not a string");
+                        return;
+                    }
+                    linkParams.put(entry.getKey(), entry.getValue().toString());
+                }
+
+                boolean wasShown = GetSocialUi.createInvitesView().setLinkParams(linkParams)
+                        // .setCustomInviteContent(inviteContent)
+                        .setInviteCallback(new InviteUiCallback() {
+                            @Override
+                            public void onComplete(String channelId) {
+                                promise.resolve(null);
+                            }
+
+                            @Override
+                            public void onCancel(String channelId) {
+                                promise.reject("Canceled"); // TODO: we should probably add an object {isCanceled: true}
+                            }
+
+                            @Override
+                            public void onError(String channelId, Throwable throwable) {
+                                promise.reject(throwable);
+                            }
+                        }).show();
+
+                Log.i("GetSocial", "GetSocial Smart Invites UI was shown: " + wasShown);
+            }
+        });
     }
 
     @Override

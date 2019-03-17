@@ -53,6 +53,11 @@ class Wrapper {
   static getUserId = () =>
     //return from our cache, or default to the NativeModule "constants" otherwise
     userInfo.userId ? userInfo.userId : RNGetSocial.userId;
+
+  //
+  // Show the invite UI
+  //
+  static showInviteUI = params => RNGetSocial.showInviteUI(params);
 }
 
 //
