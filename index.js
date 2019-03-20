@@ -57,7 +57,7 @@ class Wrapper {
   //
   // Show the invite UI
   //
-  static showInviteUI = params => RNGetSocial.showInviteUI(params);
+  static showInviteUI = (params, config) => RNGetSocial.showInviteUI(params, Object.assign({}, config));  //make sure to allways send 2 params to the native side
 }
 
 //

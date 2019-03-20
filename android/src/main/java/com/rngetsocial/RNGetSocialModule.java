@@ -13,11 +13,14 @@ import com.facebook.react.bridge.Callback;
 import im.getsocial.sdk.GetSocial;
 import im.getsocial.sdk.ui.GetSocialUi;
 import im.getsocial.sdk.usermanagement.OnUserChangedListener;
+import im.getsocial.sdk.ui.invites.InvitesViewBuilder;
 import im.getsocial.sdk.invites.FetchReferralDataCallback;
 import im.getsocial.sdk.invites.ReferralData;
 import im.getsocial.sdk.invites.LinkParams;
+import im.getsocial.sdk.invites.InviteContent;
 import im.getsocial.sdk.ui.invites.InviteUiCallback;
 import im.getsocial.sdk.GetSocialException;
+import im.getsocial.sdk.media.MediaAttachment;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -38,15 +41,19 @@ public class RNGetSocialModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void showInviteUI(final ReadableMap params, final Promise promise) {
+    public void showInviteUI(final ReadableMap params, final ReadableMap config, final Promise promise) {
 
         getCurrentActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
+                InvitesViewBuilder uiBuilder = GetSocialUi.createInvitesView();
+
                 LinkParams linkParams = new LinkParams();
 
+                //
                 // convert the params to link params
+                //
                 for (Map.Entry<String, Object> entry : params.toHashMap().entrySet()) {
 
                     // since linkParams can only be strings,
@@ -60,24 +67,57 @@ public class RNGetSocialModule extends ReactContextBaseJavaModule {
                     linkParams.put(entry.getKey(), entry.getValue().toString());
                 }
 
-                boolean wasShown = GetSocialUi.createInvitesView().setLinkParams(linkParams)
-                        // .setCustomInviteContent(inviteContent)
-                        .setInviteCallback(new InviteUiCallback() {
-                            @Override
-                            public void onComplete(String channelId) {
-                                promise.resolve(null);
-                            }
+                uiBuilder.setLinkParams(linkParams);
 
-                            @Override
-                            public void onCancel(String channelId) {
-                                promise.reject("Canceled"); // TODO: we should probably add an object {isCanceled: true}
-                            }
+                //
+                // create the invite content (social media config)
+                //
+                InviteContent.Builder contentBuilder = InviteContent.createBuilder();
 
-                            @Override
-                            public void onError(String channelId, Throwable throwable) {
-                                promise.reject(throwable);
-                            }
-                        }).show();
+                if (config.hasKey("subject")) {
+
+                    contentBuilder.withSubject(config.getString("subject"));
+                }
+
+                if (config.hasKey("text")) {
+
+                    contentBuilder.withText(config.getString("text"));
+                }
+
+                if (config.hasKey("imageUrl")) {
+
+                    contentBuilder.withMediaAttachment(MediaAttachment.imageUrl(config.getString("imageUrl")));
+                }
+
+                uiBuilder.setCustomInviteContent(contentBuilder.build());
+
+                //
+                // change the window title
+                //
+                if (config.hasKey("windowTitle")) {
+
+                    uiBuilder.setWindowTitle(config.getString("windowTitle"));
+                }
+
+                //
+                // show the UI
+                //
+                boolean wasShown = uiBuilder.setInviteCallback(new InviteUiCallback() {
+                    @Override
+                    public void onComplete(String channelId) {
+                        promise.resolve(null);
+                    }
+
+                    @Override
+                    public void onCancel(String channelId) {
+                        promise.reject("Canceled"); // TODO: we should probably add an object {isCanceled: true}
+                    }
+
+                    @Override
+                    public void onError(String channelId, Throwable throwable) {
+                        promise.reject(throwable);
+                    }
+                }).show();
 
                 Log.i("GetSocial", "GetSocial Smart Invites UI was shown: " + wasShown);
             }
