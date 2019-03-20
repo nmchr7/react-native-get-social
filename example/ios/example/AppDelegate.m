@@ -17,7 +17,7 @@
 {
   NSURL *jsCodeLocation;
   
-  [RNGetSocial init:@"GET_SOCIAL_APP_ID"];
+  [RNGetSocial initGetSocial:@"GET_SOCIAL_APP_ID"];
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
