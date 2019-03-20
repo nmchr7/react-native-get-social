@@ -11,10 +11,14 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		15694C5DA6EC0E498E77DA85 /* example.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 7A404D2996592200E4896C10 /* example.entitlements */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		36F83CABF949DB2FB960C6C2 /* libPods-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657E10B988BE7447AC4C057 /* libPods-example.a */; };
+		5C1C4B289E6C153EC60B2D56 /* example.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 7A404D2996592200E4896C10 /* example.entitlements */; };
+		96EE4351A03971CADA3B7F09 /* example.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 7A404D2996592200E4896C10 /* example.entitlements */; };
+		D20C4D9CA16642D192126ED2 /* example.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 7A404D2996592200E4896C10 /* example.entitlements */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,7 @@
 		2D02E4901E0B4A5D006451C7 /* example-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "example-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55DBA63BA185248E8E416B35 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
 		5657E10B988BE7447AC4C057 /* libPods-example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A404D2996592200E4896C10 /* example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = None; path = example.entitlements; sourceTree = SOURCE_ROOT; };
 		AE53A56C89E03DD091D10593 /* Pods-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-example/Pods-example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +127,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				29289FD9F34D0D13FFB2F9B4 /* Pods */,
+				7A404D2996592200E4896C10 /* example.entitlements */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -171,7 +177,6 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				E03DA9C623BF7B04ABC87195 /* [CP] Embed Pods Frameworks */,
 				16D4541DA2B5451A8767B0E4 /* [CP] Copy Pods Resources */,
-				2E7E7D5B2211FF8F002D6262 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -233,6 +238,11 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = JQ7P8V582S;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -271,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C1C4B289E6C153EC60B2D56 /* example.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +291,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				96EE4351A03971CADA3B7F09 /* example.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				D20C4D9CA16642D192126ED2 /* example.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15694C5DA6EC0E498E77DA85 /* example.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,23 +361,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		2E7E7D5B2211FF8F002D6262 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$SRCROOT/../scripts/getsocial.sh\" --app-id=\"YOUR_KEY\"\n";
 		};
 		6BF0716BBCB59AEDCCD870FB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -534,6 +531,7 @@
 			baseConfigurationReference = AE53A56C89E03DD091D10593 /* Pods-example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = example.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = JQ7P8V582S;
@@ -559,6 +557,7 @@
 			baseConfigurationReference = 55DBA63BA185248E8E416B35 /* Pods-example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = example.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JQ7P8V582S;
 				HEADER_SEARCH_PATHS = (

@@ -5,8 +5,8 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
-  - GetSocial/Core (6.24.4)
-  - GetSocial/UI (6.24.4):
+  - GetSocial/Core (6.24.6)
+  - GetSocial/UI (6.24.6):
     - GetSocial/Core
   - glog (0.3.5)
   - React (0.58.3):
@@ -61,7 +61,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNGetSocial (0.0.6):
+  - RNGetSocial (0.0.9):
     - GetSocial/Core
     - GetSocial/UI
     - React
@@ -107,7 +107,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
-  GetSocial: 487d5f12c318e841c7b19b67021444c87c8d2685
+  GetSocial: ab8ccbba767312d248f9b4cbe6409cdaab3f8e3a
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   React: 9b873b38b92ed8012d7cdf3b965477095ed364c4
   RNGetSocial: 2cd09a5588efe49f80527de8b7e7d10f2db09b57
