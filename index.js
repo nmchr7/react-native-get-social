@@ -57,7 +57,24 @@ class Wrapper {
   //
   // Show the invite UI
   //
-  static showInviteUI = (params, config) => RNGetSocial.showInviteUI(params, Object.assign({}, config));  //make sure to allways send 2 params to the native side
+  static showInviteUI = (params, config) =>
+    RNGetSocial.showInviteUI(params, Object.assign({}, config)); //make sure to allways send 2 params to the native side
+
+  //
+  // Hoist static variables, but in such a way that they can be mocked
+  //
+  static KEY_CUSTOM_TITLE = RNGetSocial
+    ? RNGetSocial.KEY_CUSTOM_TITLE
+    : "$title";
+  static KEY_CUSTOM_DESCRIPTION = RNGetSocial
+    ? RNGetSocial.KEY_CUSTOM_DESCRIPTION
+    : "$description";
+  static KEY_CUSTOM_IMAGE = RNGetSocial
+    ? RNGetSocial.KEY_CUSTOM_IMAGE
+    : "$image";
+  static KEY_CUSTOM_YOUTUBE_VIDEO = RNGetSocial
+    ? RNGetSocial.KEY_CUSTOM_YOUTUBE_VIDEO
+    : "$youtube_video";
 }
 
 //

@@ -133,11 +133,18 @@ public class RNGetSocialModule extends ReactContextBaseJavaModule {
     public Map<String, Object> getConstants() {
         final Map<String, Object> constants = new HashMap<>();
 
+        // add the LinkParams constants
+        constants.put("KEY_CUSTOM_TITLE", LinkParams.KEY_CUSTOM_TITLE);
+        constants.put("KEY_CUSTOM_DESCRIPTION", LinkParams.KEY_CUSTOM_DESCRIPTION);
+        constants.put("KEY_CUSTOM_IMAGE", LinkParams.KEY_CUSTOM_IMAGE);
+        constants.put("KEY_CUSTOM_YOUTUBE_VIDEO", LinkParams.KEY_CUSTOM_YOUTUBE_VIDEO);
+
         // use "constants" on the module to account for the scenario where the events
         // have been issued
         // before the js has been loaded
         constants.put("initialized", GetSocial.isInitialized());
         constants.put("userId", GetSocial.User.getId());
+
         return constants;
     }
 
