@@ -92,7 +92,7 @@ RCT_REMAP_METHOD(getReferralData,
 // showInviteUI Promise
 //
 RCT_REMAP_METHOD(showInviteUI,
-                  showInviteUIWithParams: (NSDictionary *)params
+                  showInviteUIWithParams: (NSDictionary *)linkParams
                   config: (NSDictionary *)config
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
@@ -101,16 +101,73 @@ RCT_REMAP_METHOD(showInviteUI,
     //run the invite on the UI thread
     dispatch_async(dispatch_get_main_queue(), ^{
         
-    BOOL wasShown = [[GetSocialUI createInvitesView] show];
-    if (wasShown) {
-        NSLog(@"GetSocial Smart Invites UI was shown");
-        resolve(@YES);
-    } else {
-        NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:@"err" forKey:NSLocalizedDescriptionKey];
-        NSError *error = [NSError errorWithDomain:@"You FAILED!" code:200 userInfo:details];
-        reject(@"no_ui", @"There were no invite UI shown - ", error);
-    }
+        GetSocialUIInvitesView *uiBuilder = [GetSocialUI createInvitesView];
+        
+        //
+        // set the link params
+        //
+        [uiBuilder setLinkParams:linkParams];
+        
+        
+        //
+        // create the invite content (social media config)
+        //
+        GetSocialMutableInviteContent *contentBuilder = [GetSocialMutableInviteContent new];
+        
+        if([config objectForKey:@"subject"]){
+            
+            [contentBuilder setSubject:config[@"subject"]];
+        }
+        
+        if ([config objectForKey:@"text"]) {
+
+            [contentBuilder setText:config[@"text"]];
+        }
+        
+        if ([config objectForKey:@"imageUrl"]) {
+            
+            [contentBuilder setMediaAttachment:[GetSocialMediaAttachment imageUrl:config[@"imageUrl"]]];
+        }
+
+        [uiBuilder setCustomInviteContent:contentBuilder];
+        
+        
+        //
+        // change the window title
+        //
+        if ([config objectForKey:@"windowTitle"]) {
+            
+            [uiBuilder setWindowTitle:config[@"windowTitle"]];
+        }
+        
+        
+        //
+        // Setup callback to fulfill the promises
+        //
+        [uiBuilder setHandlerForInvitesSent:^(NSString *channelId) {
+            
+            //invite sent, so finalize the promise
+            resolve(nil);
+        }
+         
+        cancel: ^(NSString *channelId){
+            
+            reject(@"GetSocial", @"Canceled", nil); // TODO: we should probably add an object {isCanceled: true}
+        }
+         
+        failure: ^(NSString *channelId , NSError *error){
+                                        
+            reject(@"GetSocial", @"Failed sending invite", error);
+        }];
+        
+        
+        //
+        // show the UI
+        //
+        BOOL wasShown = [uiBuilder show];
+        if (wasShown) {
+            NSLog(@"GetSocial Smart Invites UI was shown");
+        }
     });
 }
 
