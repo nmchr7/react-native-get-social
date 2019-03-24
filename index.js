@@ -1,4 +1,9 @@
-import { NativeModules, DeviceEventEmitter } from "react-native";
+import {
+  NativeModules,
+  Platform,
+  DeviceEventEmitter,
+  NativeEventEmitter
+} from "react-native";
 
 const { RNGetSocial } = NativeModules;
 
@@ -77,14 +82,19 @@ class Wrapper {
     : "$youtube_video";
 }
 
+const EventEmitter = Platform.select({
+  android: DeviceEventEmitter,
+  ios: new NativeEventEmitter(RNGetSocial)
+});
+
 //
 //listen for events to set the proper information
 //
-DeviceEventEmitter.addListener("getSocialUserChanged", user => {
+EventEmitter.addListener("getSocialUserChanged", user => {
   Wrapper._setUser(user);
 });
 
-DeviceEventEmitter.addListener("getSocialInitialized", () => {
+EventEmitter.addListener("getSocialInitialized", () => {
   Wrapper._setInitialized();
 });
 

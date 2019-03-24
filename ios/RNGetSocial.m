@@ -14,8 +14,29 @@
 #pragma mark - RNGetSocial implementation
 
 @implementation RNGetSocial
+{
+    bool hasListeners;
+}
+
+// Will be called when this module's first listener is added.
+-(void)startObserving {
+    hasListeners = YES;
+}
+
+// Will be called when this module's last listener is removed, or on dealloc.
+-(void)stopObserving {
+    hasListeners = NO;
+}
 
 RCT_EXPORT_MODULE()
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self setupGetSocial];
+    }
+    return self;
+}
 
 - (NSDictionary *)constantsToExport
 {
@@ -169,6 +190,34 @@ RCT_REMAP_METHOD(showInviteUI,
             NSLog(@"GetSocial Smart Invites UI was shown");
         }
     });
+}
+
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"getSocialInitialized", @"getSocialUserChanged"];
+}
+
+- (void)setupGetSocial {
+    
+    NSLog(@"GetSocial Setup Function");
+    
+    //listen to the library being initialized
+    [GetSocial executeWhenInitialized:^() {
+        // notify the JS thread that the GetSocial SDK has been initialized
+        // so it can be cached there
+        if (hasListeners) { // Only send events if anyone is listening
+         
+            [self sendEventWithName:@"getSocialInitialized" body:nil];
+        }
+    }];
+    
+    [GetSocialUser setOnUserChangedHandler:^(){
+        
+        // notify the JS thread about the new getsocial user id
+        if (hasListeners) { // Only send events if anyone is listening
+
+            [self sendEventWithName:@"getSocialUserChanged" body:@{@"userId": [GetSocialUser userId]}];
+        }
+    }];
 }
 
 @end
