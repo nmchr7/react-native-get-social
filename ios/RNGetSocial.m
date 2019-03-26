@@ -52,7 +52,7 @@ RCT_EXPORT_MODULE()
              // have been issued
              // before the js has been loaded
              @"initialized": @([GetSocial isInitialized]),
-             @"userId": [GetSocialUser userId]
+             @"userId": [GetSocial isInitialized] ? [GetSocialUser userId] : @""
              };
 }
 

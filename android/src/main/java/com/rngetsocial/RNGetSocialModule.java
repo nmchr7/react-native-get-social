@@ -143,7 +143,11 @@ public class RNGetSocialModule extends ReactContextBaseJavaModule {
         // have been issued
         // before the js has been loaded
         constants.put("initialized", GetSocial.isInitialized());
-        constants.put("userId", GetSocial.User.getId());
+        constants.put("userId", GetSocial.isInitialized() ? GetSocial.User.getId() : ""); // use the empty string
+                                                                                          // instead of null as on iOS
+                                                                                          // you can't put null in a
+                                                                                          // dictionary so we want to
+                                                                                          // have consistency
 
         return constants;
     }
