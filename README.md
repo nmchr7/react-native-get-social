@@ -1,18 +1,20 @@
 # react-native-get-social
 
-## **DISCLAIMER!**
-
-This project is very much WIP but more is to come very soon. It is to become a thin React Native wrapper around the [GetSocial](https://www.getsocial.im) native iOS and Android SDK
+This project is a thin React Native wrapper around the [GetSocial](https://www.getsocial.im) native iOS and Android SDK
 
 ## Getting started
 
 `$ npm install react-native-get-social --save`
 
-### Mostly automatic installation (unstable)
+or
 
-### **See example folder for reference!**
+`$ yarn add react-native-get-social`
+
+### installation
 
 You won't be able to build neither iOS or Android without a valid key for GetSocial. So if you want to check this project out [Create free account](https://dashboard.getsocial.im/#/register)
+
+### Automatic installation
 
 `$ react-native link react-native-get-social`
 
@@ -20,10 +22,11 @@ You won't be able to build neither iOS or Android without a valid key for GetSoc
 
 #### iOS
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-get-social` and add `RNGetSocial.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNGetSocial.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+Currently this library only supports installation via pods. If you have a solution for regular manual linking feel free to open a PR :)
+
+In you Podfile add this line 
+
+`pod 'RNGetSocial', :path => '../node_modules/react-native-get-social'`
 
 #### Android
 
