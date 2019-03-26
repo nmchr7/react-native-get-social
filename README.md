@@ -24,7 +24,7 @@ You won't be able to build neither iOS or Android without a valid key for GetSoc
 
 Currently this library only supports installation via pods. If you have a solution for regular manual linking feel free to open a PR :)
 
-In you Podfile add this line 
+In your Podfile add this line 
 
 `pod 'RNGetSocial', :path => '../node_modules/react-native-get-social'`
 
