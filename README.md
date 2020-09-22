@@ -1,3 +1,5 @@
+Update: I've archived this project as there's no maintainers. You can check this out instead [https://github.com/getsocial-im/getsocial-react-native-sdk](https://github.com/getsocial-im/getsocial-react-native-sdk)
+
 # react-native-get-social
 
 This project is a thin React Native wrapper around the [GetSocial](https://www.getsocial.im) native iOS and Android SDK
